@@ -18,8 +18,13 @@ class Hangman:
             return False
 
         ''' Collect input'''
-        char = input(f"[{len(self.chars) +1} / {self.max}] - Ange ett tecken: ")
+        char = input(f"[ Försök {len(self.chars) +1} / {self.max}] - Ange ett tecken: ")
         
+        ''' force quit '''
+        if char == 'quit':
+            print('Du avbröt spelet!')
+            return False
+
         ''' Sanitize input '''
         if len(char) != 1:
             print("Du kan bara gissa en bokstav åt gången!")
@@ -48,7 +53,7 @@ class Hangman:
             print (f"{char} fanns inte")
 
         if np.array_equal(self.word, self.answer):
-            print(f"{"".join(self.answer)} är rätt gissat!")
+            print(f"GRATTIS! {"".join(self.answer)} är rätta ordet!")
             return False
 
         return True
